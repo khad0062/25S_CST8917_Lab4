@@ -36,9 +36,7 @@ Event Hub → Logic App Trigger → Azure Function → For Each Loop → Conditi
 ## Logic App Workflow Details
 ### 1. Input
 
-This is the input data sent to the Event Hub (from Azure Data Explorer):
-
-![image1](image1)
+This is the input data (Yellow Taxi)  sent to the Event Hub (from Azure Data Explorer)
 
 ```json
 {
@@ -116,29 +114,7 @@ The Azure Function (`analyze_trip.py`) implements the following analysis logic:
 ### Input Processing
 - Accepts batch of trip events from Event Hub
 
- ```
-    "vendorID": "2",
-    "tpepPickupDateTime": 1528119858000,
-    "tpepDropoffDateTime": 1528121148000,
-    "passengerCount": 1,
-    "tripDistance": 1.24,
-    "puLocationId": "186",
-    "doLocationId": "230",
-    "startLon": null,
-    "startLat": null,
-    "endLon": null,
-    "endLat": null,
-    "rateCodeId": 1,
-    "storeAndFwdFlag": "N",
-    "paymentType": "1",
-    "fareAmount": 13.5,
-    "extra": 0,
-    "mtaTax": 0.5,
-    "improvementSurcharge": "0.3",
-    "tipAmount": 2.86,
-    "tollsAmount": 0,
-    "totalAmount": 17.16
-}
+ 
 ```
 - Extracts trip data from ContentData property
 - Handles both single events and arrays
