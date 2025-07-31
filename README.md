@@ -177,5 +177,5 @@ Each card includes:
 - Timestamp
 - Action buttons (for suspicious activities)
 
-
+### Logic AppworkFlow
 <img width="857" height="708" alt="image" src="https://github.com/user-attachments/assets/c10cac54-d73a-46ed-8814-7665b3b91c48" />
