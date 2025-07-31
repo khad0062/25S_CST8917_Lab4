@@ -34,8 +34,38 @@ Event Hub → Logic App Trigger → Azure Function → For Each Loop → Conditi
 ```
 
 ## Logic App Workflow Details
+### 1. Input
 
-### 1. Event Hub Trigger
+This is the input data sent to the Event Hub (from Azure Data Explorer):
+
+![image1](image1)
+
+```json
+{
+    "vendorID": "2",
+    "tpepPickupDateTime": 1528119858000,
+    "tpepDropoffDateTime": 1528121148000,
+    "passengerCount": 1,
+    "tripDistance": 1.24,
+    "puLocationId": "186",
+    "doLocationId": "230",
+    "startLon": null,
+    "startLat": null,
+    "endLon": null,
+    "endLat": null,
+    "rateCodeId": 1,
+    "storeAndFwdFlag": "N",
+    "paymentType": "1",
+    "fareAmount": 13.5,
+    "extra": 0,
+    "mtaTax": 0.5,
+    "improvementSurcharge": "0.3",
+    "tipAmount": 2.86,
+    "tollsAmount": 0,
+    "totalAmount": 17.16
+}
+```
+### 2. Event Hub Trigger
 ```json
 "When_events_are_available_in_Event_Hub": {
     "recurrence": {
@@ -53,7 +83,7 @@ Event Hub → Logic App Trigger → Azure Function → For Each Loop → Conditi
 - **Batch Size**: Processes up to 10 events per execution
 - **Content Type**: JSON format for structured data
 
-### 2. Azure Function Call
+### 3. Azure Function Call
 ```json
 "taxi-app-analyze_trip": {
     "type": "Function",
@@ -66,7 +96,7 @@ Event Hub → Logic App Trigger → Azure Function → For Each Loop → Conditi
 - Passes the entire event batch to the function
 - Function processes each trip and returns analysis results
 
-### 3. For Each Loop Processing
+### 4. For Each Loop Processing
 
 Iterates through each analyzed trip result and implements nested conditional logic:
 
