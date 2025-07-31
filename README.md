@@ -113,9 +113,6 @@ The Azure Function (`analyze_trip.py`) implements the following analysis logic:
 
 ### Input Processing
 - Accepts batch of trip events from Event Hub
-
- 
-```
 - Extracts trip data from ContentData property
 - Handles both single events and arrays
 
