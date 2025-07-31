@@ -4,14 +4,6 @@
         "contentVersion": "1.0.0.0",
         "triggers": {
             "When_events_are_available_in_Event_Hub": {
-                "recurrence": {
-                    "interval": 1,
-                    "frequency": "Minute"
-                },
-                "evaluatedRecurrence": {
-                    "interval": 1,
-                    "frequency": "Minute"
-                },
                 "type": "ApiConnection",
                 "inputs": {
                     "host": {
@@ -26,26 +18,53 @@
                         "consumerGroupName": "$Default",
                         "maximumEventsCount": 10
                     }
+                },
+                "recurrence": {
+                    "interval": 1,
+                    "frequency": "Minute"
                 }
             }
         },
         "actions": {
             "taxi-app-analyze_trip": {
-                "runAfter": {},
                 "type": "Function",
                 "inputs": {
                     "body": "@triggerBody()",
                     "function": {
                         "id": "/subscriptions/a110f4f4-bb11-4532-b1f2-cd0e17e3dec6/resourceGroups/CST8917_Lab4/providers/Microsoft.Web/sites/taxi-app/functions/analyze_trip"
                     }
-                }
+                },
+                "runAfter": {}
             },
             "For_each": {
+                "type": "Foreach",
                 "foreach": "@body('taxi-app-analyze_trip')",
                 "actions": {
                     "isItInteresting": {
+                        "type": "If",
+                        "expression": {
+                            "and": [
+                                {
+                                    "equals": [
+                                        "@items('For_each')?['isInteresting']",
+                                        true
+                                    ]
+                                }
+                            ]
+                        },
                         "actions": {
                             "IsSus": {
+                                "type": "If",
+                                "expression": {
+                                    "and": [
+                                        {
+                                            "equals": [
+                                                "@contains(items('For_each')?['insights'],'SuspiciousVendorActivity')",
+                                                true
+                                            ]
+                                        }
+                                    ]
+                                },
                                 "actions": {
                                     "Post_card_in_a_chat_is_Suspicious_Vendor_Activity": {
                                         "type": "ApiConnection",
@@ -83,18 +102,7 @@
                                             }
                                         }
                                     }
-                                },
-                                "expression": {
-                                    "and": [
-                                        {
-                                            "equals": [
-                                                "@contains(items('For_each')?['insights'],'SuspiciousVendorActivity')\r\n",
-                                                ""
-                                            ]
-                                        }
-                                    ]
-                                },
-                                "type": "If"
+                                }
                             }
                         },
                         "else": {
@@ -116,26 +124,14 @@
                                     }
                                 }
                             }
-                        },
-                        "expression": {
-                            "and": [
-                                {
-                                    "equals": [
-                                        "@items('For_each')?['isInteresting']",
-                                        true
-                                    ]
-                                }
-                            ]
-                        },
-                        "type": "If"
+                        }
                     }
                 },
                 "runAfter": {
                     "taxi-app-analyze_trip": [
                         "Succeeded"
                     ]
-                },
-                "type": "Foreach"
+                }
             }
         },
         "outputs": {},
