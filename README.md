@@ -148,24 +148,5 @@ Each card includes:
 - Timestamp
 - Action buttons (for suspicious activities)
 
-## Technical Implementation Details
 
-### Event Hub Configuration
-- **Partition Count**: Default (typically 4)
-- **Message Retention**: 1 day (minimum)
-- **Consumer Group**: $Default
-- **Event Format**: JSON with ContentData wrapper
-
-### Logic App Configuration
-- **Trigger Type**: Event Hub polling
-- **Polling Interval**: 1 minute
-- **Batch Processing**: Up to 10 events
-- **Error Handling**: Built-in retry policies
-
-### Azure Function Configuration
-- **Runtime**: Python runtime
-- **Trigger Type**: HTTP trigger
-- **Authentication**: Function key
-- **Timeout**: 5 minutes
-- **Memory**: 512 MB
 <img width="857" height="708" alt="image" src="https://github.com/user-attachments/assets/c10cac54-d73a-46ed-8814-7665b3b91c48" />
