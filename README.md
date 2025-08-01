@@ -68,6 +68,32 @@ This is the input data (Yellow Taxi)  sent to the Event Hub (from Azure Data Exp
     "totalAmount": 17.16
 }
 ```
+This is the custom payload for generating the suspicious vendor activity.
+```
+{
+    "vendorID": "2",
+    "tpepPickupDateTime": 1528119858000,
+    "tpepDropoffDateTime": 1528121148000,
+    "passengerCount": 3,
+    "tripDistance": 0.93,
+    "puLocationId": "186",
+    "doLocationId": "230",
+    "startLon": null,
+    "startLat": null,
+    "endLon": null,
+    "endLat": null,
+    "rateCodeId": 1,
+    "storeAndFwdFlag": "N",
+    "paymentType": 2,
+    "fareAmount": 13.5,
+    "extra": 0,
+    "mtaTax": 0.5,
+    "improvementSurcharge": "0.3",
+    "tipAmount": 2.86,
+    "tollsAmount": 0,
+    "totalAmount": 17.16
+}
+```
 ### 2. Event Hub Trigger
 ```json
 "When_events_are_available_in_Event_Hub": {
