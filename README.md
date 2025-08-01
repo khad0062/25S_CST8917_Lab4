@@ -1,4 +1,4 @@
-# CST8917 Lab 4 - Project Report: Real-Time Trip Event Analysis
+# CST8917 Lab 4 Real-Time Trip Event Analysis
 
 ## Executive Summary
 
