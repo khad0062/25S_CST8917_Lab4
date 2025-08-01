@@ -3,7 +3,8 @@
 ## Executive Summary
 
 This lab implements a real-time event-driven system for monitoring and analyzing taxi trip data. The solution leverages Azure Event Hub for data ingestion, Azure Functions for intelligent analysis, Logic Apps for workflow orchestration, and Microsoft Teams for instant notifications. The system successfully identifies suspicious patterns in trip data and alerts operations staff in real-time.
-
+## Youtube Demo
+[Youtube Video Lintk](https://youtu.be/ZEOUxJyUs7c)
 ## Architecture Overview
 
 ### System Components
