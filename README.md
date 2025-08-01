@@ -141,7 +141,7 @@ The Azure Function (`analyze_trip.py`) implements the following analysis logic:
    - **Purpose**: Flags potential fare manipulation
 
 ### Output 
-<img width="1377" height="1023" alt="image" src="https://github.com/user-attachments/assets/80212f22-a1d6-4dc8-9493-56fbddfe7556" />
+![](https://github.com/user-attachments/assets/80212f22-a1d6-4dc8-9493-56fbddfe7556)
 
 
 ## Microsoft Teams Integration
