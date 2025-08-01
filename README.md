@@ -140,36 +140,8 @@ The Azure Function (`analyze_trip.py`) implements the following analysis logic:
    - **Insight**: "SuspiciousVendorActivity"
    - **Purpose**: Flags potential fare manipulation
 
+## Microsoft Teams Integration
 ### Output 
 ![](https://github.com/user-attachments/assets/80212f22-a1d6-4dc8-9493-56fbddfe7556)
-
-
-## Microsoft Teams Integration
-
-### Adaptive Card Types
-
-1. **No Issues Card**
-   - Posted when `isItInteresting = false`
-   - Simple status notification
-   - Green color scheme
-
-2. **Interesting Trip Detected Card**
-   - Posted when `isItInteresting = true` and `isSuspicious = false`
-   - Contains trip details and insights
-   - Yellow/orange color scheme
-
-3. **Suspicious Vendor Activity Card**
-   - Posted when `isItInteresting = true` and `isSuspicious = true`
-   - High-priority alert format
-   - Red color scheme
-   - Includes escalation options
-
-### Card Content Structure
-Each card includes:
-- Trip identification (Vendor ID)
-- Key metrics (distance, passengers, payment type)
-- Analysis insights
-- Timestamp
-- Action buttons (for suspicious activities)
 
 
